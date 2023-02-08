@@ -7,7 +7,7 @@
 # The goal of this project is to determine trends in U.S. Medical insurance costs based on identity markers: age, sex, bmi, children, smoking, and region. Trends will be determinded first through a graphical representation of the variables, followed by a numerical analysis (linear regression, supported vector machines, K-nearest neighbors)
 # 
 
-# In[7]:
+# In[20]:
 
 
 # Data Extraction
@@ -17,10 +17,9 @@ with open("insurance.csv") as insurance_file:
         insurance_reader = csv.DictReader(insurance_file)
         for row in insurance_reader:
             insurance_data.append(row)
-print(insurance_data[0:10])
 
 
-# In[13]:
+# In[21]:
 
 
 # Calculate average + standard deviation, visualize insurance costs in histograph
@@ -41,7 +40,7 @@ plt.ylabel("Frequency")
 plt.show()
 
 
-# In[17]:
+# In[13]:
 
 
 # Identity Class Representation
@@ -86,7 +85,8 @@ class identity:
         self.identity_marker = identity_marker
         
     def id_val_mean(self):
-        values = [float(row[self.identity_marker]) for row in insurance_data]
+        identity_marker = self.identity_marker
+        values = [float(row[identity_marker]) for row in insurance_data]
         unique_values = list(set(values))
         unique_values_costs = np.zeros(len(unique_values))
 
@@ -106,13 +106,10 @@ class identity:
     
     
     def get_weighted_bar(self,title,group):
-        values, unique_values, unique_values_costs = self.id_val_mean(self)
+        values, unique_values, unique_values_costs = self.id_val_mean()
         N = len(values)
-        weights = np.zeros(N)
-        nums = np.zeros(N)
-        for i in range(N):
-            
-        plt.bar(unique_values,weighted_costs)
+        # do categorical weights using pandas df methods            
+        plt.bar(unique_values,unique_values_costs)
         plt.title(title)
         plt.xlabel(group)
         plt.ylabel("Weighted Cost ($)")
@@ -130,7 +127,7 @@ class identity:
 # All Ages
 ages = [float(row['age']) for row in insurance_data]
 all_ages = identity('age','within range',[min(ages),max(ages)])
-all_ages.get_weighted_bar("Weighted Cost vs Age")
+all_ages.get_weighted_bar("Weighted Cost vs Age",'All ages')
 
 
 
@@ -146,17 +143,10 @@ plt.subplot(2,1,2)
 young_age.get_histo('individuals younger than {}'.format(avg_age))
 
 
-# In[ ]:
+# In[18]:
 
 
 # BMI
-bmis, unique_bmis, unique_bmis_costs = id_val_mean('bmi')
-bmi = identity('bmi','within range',[min(bmis),max(bmis)])
-plt.bar(unique_bmis,unique_bmis_costs)
-plt.title("Insurance Cost vs BMI")
-plt.xlabel("BMI")
-plt.ylabel("Cost ($)")
-plt.show()
 
 
 # In[ ]:
@@ -181,7 +171,7 @@ plt.show()
 # Region
 
 
-# In[ ]:
+# In[19]:
 
 
 # Data Transformation
