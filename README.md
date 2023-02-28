@@ -28,5 +28,13 @@ After examining the correlation coeeficient for the quantitative and categorical
 ### Exploratory Analysis Conclusions
 Upon visualizing the 3 factors of medical insurance charge with the highest correlations, a few trends become evident: firstly, when looking at the charges vs. ages, 3 clusters are immediately apparent. When these points are visualized by the patient's smoking habits, it is clear that those who smoke generally pay more than those who don't; however, the smoking groups have a clear boundary, and it is not represented in the bmi data of the patients. Further investigation could be conducted to determine the validity of this correlation and what other factors might determine this boundary among smokers.
 
+## Verifying Correlations with Machine Learning
+
+### Multiple Linear Regression
+Training R² : 0.5896189427938663
+Testing R² : 0.5818916951480853
+For a 26 year old with a BMI of 22, they are predicted to pay $0.92 if they smoke and $0.05 if they do not.
+
 ## Visualization of Decision Tree Classification
+
 ![image](https://user-images.githubusercontent.com/28024140/221910664-890e484c-1fd8-4afe-ab03-713e80f0804d.png)
