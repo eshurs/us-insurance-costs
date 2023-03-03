@@ -22,7 +22,7 @@ After examining the correlation coeeficient for the quantitative and categorical
 
 ## Visualizations for Multivaraible Analyses
 ![image](https://user-images.githubusercontent.com/28024140/221910362-109750c0-dbbf-42f3-a85e-e4216d443372.png)
-![image](https://user-images.githubusercontent.com/28024140/221910490-af2eb878-20f0-4313-9bbe-04910d8504d9.png)
+![image](https://user-images.githubusercontent.com/28024140/222744499-cc23a922-0bd1-40c3-b535-48c7453883b8.png)
 
 Upon visualizing the 3 factors of medical insurance charge with the highest correlations, a few trends become evident: firstly, when looking at the charges vs. ages, 3 clusters are immediately apparent. When these points are visualized by the patient's smoking habits, it is clear that those who smoke generally pay more than those who don't; however, the smoking groups have a clear boundary, and it is not represented in the bmi data of the patients. Further investigation could be conducted to determine the validity of this correlation and what other factors might determine this boundary among smokers.
 
@@ -30,12 +30,11 @@ Upon visualizing the 3 factors of medical insurance charge with the highest corr
 
 Features: Age, BMI, Smoking
 
-Labels: Charges
+Labels: Charges (1 for above average, 0 for below)
 
 ### Visualization of Decision Tree Classification
 
 ![image](https://user-images.githubusercontent.com/28024140/221910664-890e484c-1fd8-4afe-ab03-713e80f0804d.png)
-
 
 ### Multiple Linear Regression
 
@@ -43,3 +42,9 @@ Training R² : 74%
 Testing R² : 76%
 
 For a 26 year old with a BMI of 22, they are predicted to pay $26077.92 if they smoke and $2354.44 if they do not.
+
+### Conclusions
+
+The decision tree was trained to split groups based on whether they paid above or below the average insurance charges. The first branching of the tree divides smokers and non smokers who pay higher and lower than the average cost of insurance (respectively); this split also yields the most information gain (shown by the biggest drop in entropy), so it is evident that the decision tree confirms the conclusion of the exploratory analysis.
+
+Likewise, the multiple linear regression predicts that individuals who smoke will pay substantially more in insurance charges than those who don't, even if they are otherwise young and have a healthy BMI. 
